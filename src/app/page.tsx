@@ -14,7 +14,7 @@ export default async function Home() {
       <main className={styles.main}>
         <div className={styles.container}>
           <h1 className={styles.title}>
-            Create <span className={styles.pinkSpan}>T3</span> App
+            Sohnim <span className={styles.pinkSpan}>IO</span>
           </h1>
           <div className={styles.cardRow}>
             <Link
