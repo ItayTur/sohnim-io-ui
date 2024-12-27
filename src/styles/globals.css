@@ -14,3 +14,21 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  /* Background Colors */
+  --background-gradient-start: #2e026d; /* Deep purple */
+  --background-gradient-end: #15162c; /* Dark navy/indigo */
+
+  /* Accent Colors */
+  --accent-primary: hsl(280, 100%, 70%); /* Vibrant purple-pink */
+  --accent-secondary: #8a2be2; /* Lighter purple for highlights (optional) */
+
+  /* Foreground/Text Colors */
+  --foreground-primary: #ffffff; /* White */
+  --foreground-secondary: #cccccc; /* Light gray for secondary text */
+
+  /* Neutral/Support Colors */
+  --neutral-light: #f4f4f4; /* Near-white for light backgrounds or borders */
+  --neutral-dark: #2d2d2d; /* Dark gray for subtle contrasts */
+}
