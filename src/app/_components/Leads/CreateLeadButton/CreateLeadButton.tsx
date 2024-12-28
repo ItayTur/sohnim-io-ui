@@ -20,7 +20,7 @@ export const CreateLeadButton = () => {
         Create Lead
       </Button>
       <Dialog open={modalOpen} onClose={onClose}>
-        <LeadForm />
+        <LeadForm onSuccess={onClose} />
       </Dialog>
     </>
   );

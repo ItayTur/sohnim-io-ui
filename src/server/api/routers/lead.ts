@@ -35,7 +35,7 @@ export const leadRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input }) => {
-      const leadToPush: Lead = { id: leads.length, ...input };
+      const leadToPush: Lead = { id: leads.length + 1, ...input };
       leads.push(leadToPush);
       return leadToPush;
     }),

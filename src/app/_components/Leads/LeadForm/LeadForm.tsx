@@ -13,20 +13,23 @@ import {
 import styles from "./LeadForm.module.css";
 import { getDefaultLead } from "./LeadForm.utils";
 
-export const LeadForm = () => {
+type LeadFormProps = {
+  onSuccess: () => void;
+};
+
+export const LeadForm = ({ onSuccess }: LeadFormProps) => {
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadSchema),
     defaultValues: getDefaultLead(),
   });
-  const createLead = api.lead.createLead.useMutation();
   const utils = api.useUtils();
+  const createLead = api.lead.createLead.useMutation();
 
   const onSubmit = async (values: LeadFormValues) => {
-    // Simulate form submission
-    const newLead = await createLead.mutateAsync(values);
+    await createLead.mutateAsync(values);
+    // Invalidate the leads query to trigger a re-fetch
     await utils.lead.getLeads.invalidate();
-    form.reset();
-    alert(`Lead ${newLead.firstName} submitted successfully! `);
+    onSuccess();
   };
 
   return (
