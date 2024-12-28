@@ -1,4 +1,5 @@
 import { Text } from "../UI";
+import { CreateLeadButton } from "./CreateLeadButton/CreateLeadButton";
 import styles from "./Leads.module.css";
 import { LeadsTable } from "./LeadsTable/LeadsTable";
 
@@ -8,7 +9,10 @@ export const Leads = () => {
       <Text variant="h2" className={styles.leadsTitle} aria-label="leads table">
         Leads
       </Text>
-      <LeadsTable />
+      <div className={styles.leadsBody}>
+        <CreateLeadButton />
+        <LeadsTable />
+      </div>
     </div>
   );
 };
