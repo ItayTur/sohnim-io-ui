@@ -1,37 +1,50 @@
 "use client";
 
+import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DialogContent } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
-import { DialogActions, DialogTitle, Input } from "../../UI";
+import { Button, DialogActions, DialogTitle, Input } from "../../UI";
 import {
   LeadFormFields,
   type LeadFormValues,
   leadSchema,
 } from "./LeadForm.consts";
 import styles from "./LeadForm.module.css";
+import { getDefaultLead } from "./LeadForm.utils";
 
 export const LeadForm = () => {
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadSchema),
+    defaultValues: getDefaultLead(),
   });
+  const createLead = api.lead.createLead.useMutation();
+  const utils = api.useUtils();
 
-  const onSubmit = async () => {
+  const onSubmit = async (values: LeadFormValues) => {
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const newLead = await createLead.mutateAsync(values);
+    await utils.lead.getLeads.invalidate();
     form.reset();
-    alert("Lead submitted successfully!");
+    alert(`Lead ${newLead.firstName} submitted successfully! `);
   };
 
   return (
     <FormProvider {...form}>
       <DialogTitle>Create Lead</DialogTitle>
       <DialogContent>
-        <form onSubmit={form.handleSubmit(onSubmit)} className={styles.form}>
+        <form className={styles.form}>
           <Input
-            name={LeadFormFields.Name}
-            id={LeadFormFields.Name}
-            label="Name"
+            name={LeadFormFields.FirstName}
+            id={LeadFormFields.FirstName}
+            label="First Name"
+            className={styles.input}
+          />
+
+          <Input
+            name={LeadFormFields.LastName}
+            id={LeadFormFields.LastName}
+            label="Last Name"
             className={styles.input}
           />
 
@@ -52,13 +65,14 @@ export const LeadForm = () => {
           />
         </form>
         <DialogActions>
-          <button
+          <Button
             type="submit"
             className={styles.submitButton}
             disabled={form.formState.isSubmitting}
+            onClick={form.handleSubmit(onSubmit)}
           >
             {form.formState.isSubmitting ? "Submitting..." : "Submit"}
-          </button>
+          </Button>
         </DialogActions>
       </DialogContent>
     </FormProvider>
