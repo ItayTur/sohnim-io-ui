@@ -11,7 +11,35 @@ export const Input: React.FC<InputProps> = ({ name, ...props }) => {
     <Controller
       name={name}
       control={control}
-      render={({ field }) => <TextField {...field} {...props} />}
+      render={({ field, fieldState }) => (
+        <TextField
+          helperText={fieldState.error?.message}
+          {...field}
+          {...props}
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "var(--neutral-dark)",
+              },
+              "&:hover fieldset": {
+                borderColor: "var(--accent-primary)",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "var(--accent-primary)",
+              },
+            },
+            "& .MuiFormLabel-root": {
+              color: "var(--foreground-secondary)",
+              "&.Mui-focused": {
+                color: "var(--accent-primary)",
+              },
+            },
+            "& .MuiFormHelperText-root": {
+              color: "var(--accent-primary)",
+            },
+          }}
+        />
+      )}
     />
   );
 };
