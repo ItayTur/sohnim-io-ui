@@ -21,8 +21,9 @@ a {
   --background-gradient-end: #15162c; /* Dark navy/indigo */
 
   /* Accent Colors */
-  --accent-primary: hsl(280, 100%, 70%); /* Vibrant purple-pink */
-  --accent-secondary: #8a2be2; /* Lighter purple for highlights (optional) */
+  --accent-primary: #cc66ff; /* Vibrant purple-pink */
+  --accent-primary-light: #e0b3ff; /* Lighter purple for highlights (optional) */
+  --accent-primary-dark: #8a2be2; /* Darker purple for highlights (optional) */
 
   /* Foreground/Text Colors */
   --foreground-primary: #ffffff; /* White */
