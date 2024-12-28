@@ -5,11 +5,12 @@ import { Table } from "../../UI";
 import { columns } from "./LeadTabls.columns";
 
 export const LeadsTable = () => {
-  const [leads] = api.lead.getLeads.useSuspenseQuery();
+  const { data: leads, isLoading } = api.lead.getLeads.useQuery();
+
   return (
     <Table
       rows={leads}
-      loading={!leads}
+      loading={isLoading}
       columns={columns}
       initialState={{
         sorting: {

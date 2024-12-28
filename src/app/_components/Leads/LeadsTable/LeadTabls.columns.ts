@@ -11,5 +11,3 @@ export const columns: GridColDef[] = [
     width: 90,
   },
 ];
-
-const paginationModel = { page: 0, pageSize: 5 };
