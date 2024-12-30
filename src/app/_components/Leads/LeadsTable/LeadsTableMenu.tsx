@@ -1,6 +1,7 @@
 "use client";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Link from "next/link";
 import { useState } from "react";
 import { Dialog, IconButton, Menu } from "../../UI";
 import { useDialog } from "../../UI/Dialog/useDialog";
@@ -33,10 +34,6 @@ export const LeadsTableMenu = ({ lead }: LeadTableMenuProps) => {
     openLeadForm();
   };
 
-  const onClearingHouse = () => {
-    // Implement the clearing house functionality here
-  };
-
   return (
     <>
       <IconButton
@@ -61,7 +58,9 @@ export const LeadsTableMenu = ({ lead }: LeadTableMenuProps) => {
         }}
       >
         <MenuItem onClick={onEdit}>ערוך</MenuItem>
-        <MenuItem onClick={onClearingHouse}>מסלקה</MenuItem>
+        <MenuItem>
+          <Link href={`/${lead.id}`}>מוצרים</Link>
+        </MenuItem>
       </Menu>
       <Dialog open={leadFormOpen}>
         <LeadForm onSuccess={closeLeadForm} lead={lead} />
