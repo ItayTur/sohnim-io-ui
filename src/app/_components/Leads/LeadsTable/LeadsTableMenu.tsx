@@ -1,3 +1,5 @@
+"use client";
+
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
@@ -5,8 +7,13 @@ import { Dialog, Menu } from "../../UI";
 import { useDialog } from "../../UI/Dialog/useDialog";
 import { MenuItem } from "../../UI/Menu/MenuItem";
 import { LeadForm } from "../LeadForm/LeadForm";
+import { type Lead } from "../Leads.types";
 
-export const LeadsTableMenu = () => {
+type LeadTableMenuProps = {
+  lead: Lead;
+};
+
+export const LeadsTableMenu = ({ lead }: LeadTableMenuProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const {
     dialogOpen: leadFormOpen,
@@ -24,7 +31,6 @@ export const LeadsTableMenu = () => {
   };
 
   const onEdit = () => {
-    // Implement the edit functionality here
     openLeadForm();
   };
 
@@ -59,7 +65,7 @@ export const LeadsTableMenu = () => {
         <MenuItem onClick={onClearingHouse}>מסלקה</MenuItem>
       </Menu>
       <Dialog open={leadFormOpen}>
-        <LeadForm onSuccess={closeLeadForm} />
+        <LeadForm onSuccess={closeLeadForm} lead={lead} />
       </Dialog>
     </>
   );
