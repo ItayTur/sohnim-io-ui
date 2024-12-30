@@ -1,12 +1,19 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { Menu } from "../../UI";
+import { Dialog, Menu } from "../../UI";
+import { useDialog } from "../../UI/Dialog/useDialog";
 import { MenuItem } from "../../UI/Menu/MenuItem";
+import { LeadForm } from "../LeadForm/LeadForm";
 
 export const LeadsTableMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const {
+    dialogOpen: leadFormOpen,
+    closeDialog: closeLeadForm,
+    openDialog: openLeadForm,
+  } = useDialog();
+  const menuOpen = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -18,6 +25,7 @@ export const LeadsTableMenu = () => {
 
   const onEdit = () => {
     // Implement the edit functionality here
+    openLeadForm();
   };
 
   const onClearingHouse = () => {
@@ -36,7 +44,7 @@ export const LeadsTableMenu = () => {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        open={open}
+        open={menuOpen}
         onClose={handleClose}
         anchorOrigin={{
           vertical: "center",
@@ -50,6 +58,9 @@ export const LeadsTableMenu = () => {
         <MenuItem onClick={onEdit}>ערוך</MenuItem>
         <MenuItem onClick={onClearingHouse}>מסלקה</MenuItem>
       </Menu>
+      <Dialog open={leadFormOpen}>
+        <LeadForm onSuccess={closeLeadForm} />
+      </Dialog>
     </>
   );
 };
