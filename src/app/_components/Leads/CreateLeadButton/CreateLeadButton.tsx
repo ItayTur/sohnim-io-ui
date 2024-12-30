@@ -1,26 +1,19 @@
 "use client";
 
-import { useState } from "react";
 import { Button, Dialog } from "../../UI";
+import { useDialog } from "../../UI/Dialog/useDialog";
 import { LeadForm } from "../LeadForm/LeadForm";
 
 export const CreateLeadButton = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const onClick = () => {
-    setModalOpen(true);
-  };
-
-  const onClose = () => {
-    setModalOpen(false);
-  };
+  const { dialogOpen, openDialog, closeDialog } = useDialog();
 
   return (
     <>
-      <Button variant="contained" onClick={onClick}>
+      <Button variant="contained" onClick={openDialog}>
         Create Lead
       </Button>
-      <Dialog open={modalOpen} onClose={onClose}>
-        <LeadForm onSuccess={onClose} />
+      <Dialog open={dialogOpen} onClose={closeDialog}>
+        <LeadForm onSuccess={closeDialog} />
       </Dialog>
     </>
   );
