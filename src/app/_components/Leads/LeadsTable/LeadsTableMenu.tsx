@@ -1,9 +1,8 @@
 "use client";
 
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { Dialog, Menu } from "../../UI";
+import { Dialog, IconButton, Menu } from "../../UI";
 import { useDialog } from "../../UI/Dialog/useDialog";
 import { MenuItem } from "../../UI/Menu/MenuItem";
 import { LeadForm } from "../LeadForm/LeadForm";

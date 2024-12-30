@@ -2,7 +2,7 @@
 
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { DialogContent } from "@mui/material";
+import DialogContent from "@mui/material/DialogContent";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button, DialogActions, DialogTitle, Input } from "../../UI";
 import {

@@ -7,7 +7,7 @@ import { type Metadata } from "next";
 
 import { theme } from "@/theme";
 import { TRPCReactProvider } from "@/trpc/react";
-import { ThemeProvider } from "@mui/material";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Sohnim IO",

@@ -1,4 +1,4 @@
-import { Button as MuiButton, type ButtonProps } from "@mui/material";
+import MuiButton, { type ButtonProps } from "@mui/material/Button";
 
 const stylesByVarientsMap: Record<
   NonNullable<ButtonProps["variant"]>,

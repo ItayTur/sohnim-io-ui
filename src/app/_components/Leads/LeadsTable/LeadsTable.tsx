@@ -5,7 +5,7 @@ import { Table } from "../../UI";
 import { columns } from "./LeadsTable.columns";
 
 export const LeadsTable = () => {
-  const [leads] = api.lead.getLeads.useSuspenseQuery();
+  const { data: leads } = api.lead.getLeads.useQuery();
 
   return (
     <Table

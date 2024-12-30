@@ -1,7 +1,6 @@
-import {
-  DialogActions as MuiDialogActions,
+import MuiDialogActions, {
   type DialogActionsProps,
-} from "@mui/material";
+} from "@mui/material/DialogActions";
 
 export const DialogActions = (props: DialogActionsProps) => {
   return <MuiDialogActions {...props} />;
