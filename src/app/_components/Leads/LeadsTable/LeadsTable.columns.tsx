@@ -1,4 +1,5 @@
 import { type GridColDef } from "@mui/x-data-grid";
+import { LeadsTableMenu } from "./LeadsTableMenu";
 
 export const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -9,5 +10,14 @@ export const columns: GridColDef[] = [
     headerName: "Age",
     type: "number",
     width: 90,
+  },
+  {
+    headerName: "",
+    type: "actions",
+    field: "actions",
+    align: "right",
+    renderCell: () => <LeadsTableMenu />,
+    sortable: false,
+    filterable: false,
   },
 ];
