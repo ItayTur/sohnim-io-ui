@@ -1,12 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../../trpc";
-import { type Product, products } from "./product.consts";
-
-const productInputSchema = z.object({
-  name: z.string().min(1),
-  price: z.number().min(0),
-  description: z.string().optional(),
-});
+import { type Product, productInputSchema, products } from "./product.consts";
 
 export const productRouter = createTRPCRouter({
   getProducts: publicProcedure.query(async ({ ctx }) => {
@@ -37,5 +31,14 @@ export const productRouter = createTRPCRouter({
         ...input,
       } as Product;
       return products[productIndex];
+    }),
+  getProductsByLeadId: publicProcedure
+    .input(
+      z.object({
+        leadId: z.number(),
+      })
+    )
+    .query(async ({ input }) => {
+      return products.filter((product) => product.leadId === input.leadId);
     }),
 });

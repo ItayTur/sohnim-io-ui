@@ -4,6 +4,6 @@ export * from "./Dialog/DialogActions";
 export * from "./Dialog/DialogTitle";
 export * from "./IconButton/IconButton";
 export * from "./Input/Input";
-export * from "./Menu/Menu";
+export * from "./Menu";
 export * from "./Table/Table";
 export * from "./Text/Text";

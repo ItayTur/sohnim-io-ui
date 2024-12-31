@@ -1,10 +1,16 @@
-import { Text } from "../_components/UI";
+import { api, HydrateClient } from "@/trpc/server";
+import { Products } from "../_components/Products/Products";
 
 export default async function LeadProducts({
   params,
 }: {
   params: Promise<{ leadId: number }>;
 }) {
-  const leadId = (await params).leadId;
-  return <Text>hello from prodcuts of {leadId}</Text>;
+  const leadId = Number((await params).leadId);
+  void api.product.getProductsByLeadId({ leadId });
+  return (
+    <HydrateClient>
+      <Products leadId={leadId} />
+    </HydrateClient>
+  );
 }
