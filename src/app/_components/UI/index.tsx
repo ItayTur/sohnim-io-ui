@@ -7,3 +7,4 @@ export * from "./Input/Input";
 export * from "./Menu";
 export * from "./Table/Table";
 export * from "./Text/Text";
+export * from "./ThreeDotsMenu/ThreeDotsMenu";
