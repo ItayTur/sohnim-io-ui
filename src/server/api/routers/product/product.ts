@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "../../trpc";
-import { products } from "./product.consts";
+import {
+  productCategoriesByLead,
+  type ProductCategory,
+} from "./product.consts";
 
 export const productRouter = createTRPCRouter({
   getProductsByLeadId: publicProcedure
@@ -9,7 +12,7 @@ export const productRouter = createTRPCRouter({
         leadId: z.number(),
       })
     )
-    .query(async ({ input }) => {
-      return products.filter((product) => product.leadId === input.leadId);
+    .query(({ input }) => {
+      return productCategoriesByLead[input.leadId] ?? ([] as ProductCategory[]);
     }),
 });

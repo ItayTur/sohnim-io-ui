@@ -4,9 +4,14 @@ import { ProductsTableMenu } from "./ProductsTableMenu";
 
 type ProductsGridRenderCellParams = GridRenderCellParams<Product>;
 
-export const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 130 },
+export const productCategoryColumns: GridColDef[] = [
+  { field: "id", headerName: "Category ID", width: 100 },
+  { field: "name", headerName: "Category Name", width: 200 },
+];
+
+export const productColumns: GridColDef[] = [
+  { field: "id", headerName: "Product ID", width: 70 },
+  { field: "name", headerName: "Product Name", width: 130 },
   { field: "price", headerName: "Price", type: "number", width: 90 },
   { field: "description", headerName: "Description", width: 200 },
   {
@@ -14,8 +19,8 @@ export const columns: GridColDef[] = [
     type: "actions",
     field: "actions",
     align: "right",
-    renderCell: ({ row: product }: ProductsGridRenderCellParams) => (
-      <ProductsTableMenu product={product} />
+    renderCell: ({ row }: ProductsGridRenderCellParams) => (
+      <ProductsTableMenu />
     ),
     sortable: false,
     filterable: false,

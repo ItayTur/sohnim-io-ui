@@ -1,5 +1,5 @@
 import { api, HydrateClient } from "@/trpc/server";
-import { Products } from "../_components/Products/Products";
+import { ProductCategories } from "../_components/Products/ProductCategories/ProductCategories";
 
 export default async function LeadProducts({
   params,
@@ -10,7 +10,7 @@ export default async function LeadProducts({
   void api.product.getProductsByLeadId({ leadId });
   return (
     <HydrateClient>
-      <Products leadId={leadId} />
+      <ProductCategories leadId={leadId} />
     </HydrateClient>
   );
 }

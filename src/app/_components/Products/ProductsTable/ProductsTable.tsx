@@ -1,18 +1,16 @@
-"use client";
-
-import { api } from "@/trpc/react";
 import { Table } from "../../UI";
-import { columns } from "./ProductsTable.columns";
+import { type Product } from "../Products.types";
+import { productColumns } from "./ProductsTable.columns";
 
-export const ProductsTable = ({ leadId }: { leadId: number }) => {
-  const { data: products } = api.product.getProductsByLeadId.useQuery({
-    leadId,
-  });
+type ProductsTableProps = {
+  products: Product[];
+};
 
+export const ProductsTable = ({ products }: ProductsTableProps) => {
   return (
     <Table
       rows={products}
-      columns={columns}
+      columns={productColumns}
       initialState={{
         sorting: {
           sortModel: [
