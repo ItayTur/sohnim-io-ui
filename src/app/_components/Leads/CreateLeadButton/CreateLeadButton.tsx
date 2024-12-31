@@ -1,8 +1,8 @@
 "use client";
 
-import { Button, Dialog } from "../../UI";
+import { Button } from "../../UI";
 import { useDialog } from "../../UI/Dialog/useDialog";
-import { LeadForm } from "../LeadForm/LeadForm";
+import { LeadDialog } from "../LeadDialog/LeadDialog";
 
 export const CreateLeadButton = () => {
   const { dialogOpen, openDialog, closeDialog } = useDialog();
@@ -12,9 +12,7 @@ export const CreateLeadButton = () => {
       <Button variant="contained" onClick={openDialog}>
         Create Lead
       </Button>
-      <Dialog open={dialogOpen} onClose={closeDialog}>
-        <LeadForm onSuccess={closeDialog} />
-      </Dialog>
+      <LeadDialog open={dialogOpen} onClose={closeDialog} />
     </>
   );
 };
