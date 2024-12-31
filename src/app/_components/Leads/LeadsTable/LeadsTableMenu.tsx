@@ -3,10 +3,10 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Link from "next/link";
 import { useState } from "react";
-import { Dialog, IconButton, Menu } from "../../UI";
+import { IconButton, Menu } from "../../UI";
 import { useDialog } from "../../UI/Dialog/useDialog";
 import { MenuItem } from "../../UI/Menu/MenuItem";
-import { LeadForm } from "../LeadForm/LeadForm";
+import { LeadDialog } from "../LeadDialog/LeadDialog";
 import { type Lead } from "../Leads.types";
 
 type LeadTableMenuProps = {
@@ -62,9 +62,7 @@ export const LeadsTableMenu = ({ lead }: LeadTableMenuProps) => {
           <Link href={`/${lead.id}`}>מוצרים</Link>
         </MenuItem>
       </Menu>
-      <Dialog open={leadFormOpen}>
-        <LeadForm onSuccess={closeLeadForm} lead={lead} />
-      </Dialog>
+      <LeadDialog open={leadFormOpen} onClose={closeLeadForm} lead={lead} />
     </>
   );
 };

@@ -14,7 +14,7 @@ import styles from "./LeadForm.module.css";
 import { type LeadFormProps } from "./LeadForm.types";
 import { getDefaultLead } from "./LeadForm.utils";
 
-export const LeadForm = ({ onSuccess, lead }: LeadFormProps) => {
+export const LeadForm = ({ lead, onClose }: LeadFormProps) => {
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadSchema),
     defaultValues: lead ?? getDefaultLead(),
@@ -30,9 +30,8 @@ export const LeadForm = ({ onSuccess, lead }: LeadFormProps) => {
     } else {
       await createLead.mutateAsync(values);
     }
-    // Invalidate the leads query to trigger a re-fetch
     await utils.lead.getLeads.invalidate();
-    onSuccess();
+    onClose();
   };
 
   return (
@@ -71,6 +70,7 @@ export const LeadForm = ({ onSuccess, lead }: LeadFormProps) => {
           />
         </form>
         <DialogActions>
+          <Button onClick={onClose}>Close</Button>
           <Button
             type="submit"
             className={styles.submitButton}

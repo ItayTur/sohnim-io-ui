@@ -1,6 +1,6 @@
 import { type Lead } from "../Leads.types";
 
 export type LeadFormProps = {
-  onSuccess: () => void;
+  onClose: () => void;
   lead?: Lead;
 };
