@@ -5,7 +5,7 @@ export const ProductCategories = ({ leadId }: { leadId: number }) => {
   return (
     <>
       <Text variant="h2" fontWeight={800} aria-label="product categories table">
-        Product Categories
+        Product By Categories
       </Text>
 
       <ProductCategoriesTable leadId={leadId} />
