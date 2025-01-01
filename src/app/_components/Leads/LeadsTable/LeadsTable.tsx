@@ -9,7 +9,9 @@ export const LeadsTable = () => {
   const { data: leads } = api.lead.getLeads.useQuery();
 
   return (
-    <Box sx={{ width: "100%", height: 400 }}>
+    <Box
+      sx={{ height: { xs: 300, sm: 400 }, width: "100%", overflowX: "auto" }}
+    >
       <Table
         rows={leads}
         columns={columns}
